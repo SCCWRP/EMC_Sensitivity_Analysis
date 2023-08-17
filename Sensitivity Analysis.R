@@ -108,11 +108,12 @@ file_list_table <- expand.grid(
   stringsAsFactors = FALSE
 ) |>
   dplyr::mutate(
-    output_dir = paste(
-      "output", 
-      stringr::str_split_i(path, "/", i = 2), 
-      stringr::str_split_i(path, "/", i = 3), 
-      sep = "/"
+    output_dir = purrr::map(
+      path,
+      .f = function(x) {
+        y <- stringr::str_split(x, "/")[[1]]
+        paste("output", paste(y[2:(length(y)-1)], collapse = "/"), sep="/")
+      }
     )
   )
 
