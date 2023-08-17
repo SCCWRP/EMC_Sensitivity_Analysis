@@ -84,8 +84,9 @@ volume_plot <- function(flow_plot_data, sample_points_plot_data, sample_bin_brea
       inherit.aes = FALSE, 
       size = 1.5
     ) +
-    scale_fill_manual(values = c("darkgray", "gray")) +
-    scale_color_manual(values = c("darkgray", "gray")) +
+    theme_bw() +
+    scale_fill_manual(values = c("darkgray", "#ebebeb")) +
+    scale_color_manual(values = c("darkgray", "#ebebeb")) +
     theme(legend.position = "none")  +
     labs(y = flow_plot_data$rate[1], x = "Time since start (min)")
 }
