@@ -88,7 +88,7 @@ file_list <- list.files("data", recursive = TRUE, full.names = TRUE)
 # or data/Auckland/Untreated
 output_dirs <- sapply(
   strsplit(file_list, "/"), 
-  FUN = function(x) paste("output", x[[2]], x[[3]], c("Plots", "Tables"), sep="/")
+  FUN = function(x) paste("output", paste(x[2:(length(x)-1)], collapse = "/"), c("Plots", "Tables"), sep="/")
 ) |>
   as.vector() |>
   unique()
